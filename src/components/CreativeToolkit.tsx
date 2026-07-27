@@ -11,7 +11,7 @@ const CREATIVE_ICONS = [
   { id: "instagram", src: "https://cdn.simpleicons.org/instagram/E4405F", size: 52 },
   { id: "tiktok", src: "https://cdn.simpleicons.org/tiktok", size: 52 },
   { id: "canva", src: "https://cdn.simpleicons.org/canva/00C4CC", size: 52 },
-  { id: "figma", src: "https://cdn.simpleicons.org/figma/F24E1E", size: 52 }
+  { id: "figma", src: "https://cdn.simpleicons.org/figma/F24E1E", size: 52 },
 ];
 
 interface IconBody {
@@ -22,13 +22,19 @@ interface IconBody {
 
 export const CreativeToolkit = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const engineRef = useRef<Matter.Engine | null>(null);
   const runnerRef = useRef<Matter.Runner | null>(null);
   const iconBodiesRef = useRef<IconBody[]>([]);
-  const [bodies, setBodies] = useState<{ id: string; x: number; y: number; angle: number; size: number }[]>([]);
+  const [bodies, setBodies] = useState<
+    { id: string; x: number; y: number; angle: number; size: number }[]
+  >([]);
   const rafRef = useRef<number>(0);
-  const mouseRef = useRef<Matter.Mouse | null>(null);
+
+  // Manual drag state — avoids any canvas overlay
+  const dragRef = useRef<{
+    body: Matter.Body | null;
+    constraint: Matter.Constraint | null;
+  }>({ body: null, constraint: null });
 
   const syncDOM = useCallback(() => {
     const updated = iconBodiesRef.current.map((b) => ({
@@ -46,18 +52,16 @@ export const CreativeToolkit = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    const { Engine, Runner, Bodies, Composite, Mouse, MouseConstraint, Events } = Matter;
+    const { Engine, Runner, Bodies, Composite, Body, Query, Constraint } = Matter;
 
     const width = container.offsetWidth;
     const height = container.offsetHeight;
 
-    const engine = Engine.create({
-      gravity: { x: 0, y: 1.8, scale: 0.001 },
-    });
+    const engine = Engine.create({ gravity: { x: 0, y: 1.8, scale: 0.001 } });
     engineRef.current = engine;
 
     const wallThickness = 60;
-    const floor = Bodies.rectangle(width / 2, height + wallThickness / 2, width + 100, wallThickness, { isStatic: true, restitution: 0.3, friction: 0.8 });
+    const floor = Bodies.rectangle(width / 2, height + wallThickness / 2, width + 100, wallThickness, { isStatic: true, restitution: 0.4, friction: 0.8 });
     const leftWall = Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true, restitution: 0.3 });
     const rightWall = Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true, restitution: 0.3 });
     Composite.add(engine.world, [floor, leftWall, rightWall]);
@@ -79,44 +83,72 @@ export const CreativeToolkit = () => {
     Composite.add(engine.world, iconBodies.map((b) => b.body));
     iconBodiesRef.current = iconBodies;
 
-    const canvas = canvasRef.current;
-    if (canvas) {
-      canvas.width = width;
-      canvas.height = height;
+    // ---- Manual mouse drag — NO canvas, no scroll blocking ----
+    const getRelativePos = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    };
 
-      const mouse = Mouse.create(canvas);
-      mouse.pixelRatio = 1;
-      mouseRef.current = mouse;
+    let dragConstraint: Matter.Constraint | null = null;
+    let dragBody: Matter.Body | null = null;
+    let prevPos = { x: 0, y: 0 };
+    let prevTime = 0;
+    let velX = 0;
+    let velY = 0;
 
-      // Allow the wheel event to propagate to the page (don't consume scroll)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (mouse as any).element.removeEventListener("wheel", (mouse as any).onmousewheel);
-
-      const mouseConstraint = MouseConstraint.create(engine, {
-        mouse,
-        constraint: {
-          stiffness: 0.2,
-          render: { visible: false },
-        },
+    const onMouseDown = (e: MouseEvent) => {
+      const pos = getRelativePos(e);
+      const hit = Query.point(iconBodiesRef.current.map(b => b.body), pos);
+      if (hit.length === 0) return;
+      dragBody = hit[0];
+      dragConstraint = Constraint.create({
+        pointA: pos,
+        bodyB: dragBody,
+        pointB: { x: pos.x - dragBody.position.x, y: pos.y - dragBody.position.y },
+        stiffness: 0.2,
+        damping: 0,
+        render: { visible: false },
       });
-      Composite.add(engine.world, mouseConstraint);
+      Composite.add(engine.world, dragConstraint);
+      dragRef.current = { body: dragBody, constraint: dragConstraint };
+      prevPos = pos;
+      prevTime = Date.now();
+      velX = 0;
+      velY = 0;
+    };
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      Events.on(mouseConstraint, "enddrag", (e: any) => {
-        const body = e.body as Matter.Body;
-        if (body) {
-          Matter.Body.setVelocity(body, {
-            x: body.velocity.x * 3,
-            y: body.velocity.y * 3,
-          });
-        }
-      });
-    }
+    const onMouseMove = (e: MouseEvent) => {
+      if (!dragConstraint) return;
+      const pos = getRelativePos(e);
+      const now = Date.now();
+      const dt = now - prevTime;
+      if (dt > 0) {
+        velX = (pos.x - prevPos.x) / dt;
+        velY = (pos.y - prevPos.y) / dt;
+      }
+      prevPos = pos;
+      prevTime = now;
+      dragConstraint.pointA = pos;
+    };
+
+    const onMouseUp = () => {
+      if (!dragConstraint || !dragBody) return;
+      Composite.remove(engine.world, dragConstraint);
+      // fling on release
+      Body.setVelocity(dragBody, { x: velX * 12, y: velY * 12 });
+      dragConstraint = null;
+      dragBody = null;
+      dragRef.current = { body: null, constraint: null };
+    };
+
+    // Use capture=false, passive=true so browser scroll is never blocked
+    container.addEventListener("mousedown", onMouseDown, { passive: true });
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("mouseup", onMouseUp, { passive: true });
 
     const runner = Runner.create();
     runnerRef.current = runner;
     Runner.run(runner, engine);
-
     rafRef.current = requestAnimationFrame(syncDOM);
 
     return () => {
@@ -124,30 +156,26 @@ export const CreativeToolkit = () => {
       Runner.stop(runner);
       Engine.clear(engine);
       Composite.clear(engine.world, false);
+      container.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
     };
   }, [syncDOM]);
 
   const iconMap: Record<string, string> = {};
-  CREATIVE_ICONS.forEach((icon) => {
-    iconMap[icon.id] = icon.src;
-  });
+  CREATIVE_ICONS.forEach((icon) => { iconMap[icon.id] = icon.src; });
 
   return (
     <div
       ref={containerRef}
       className="absolute inset-0 overflow-hidden select-none bg-transparent w-full h-full z-0"
-      style={{ pointerEvents: "none" }}
+      style={{ cursor: "default", pointerEvents: "none" }}
     >
-      {/* Canvas only handles mouse events, not scroll */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full z-10"
-        style={{ cursor: "grab", pointerEvents: "auto", touchAction: "pan-y" }}
-      />
+      {/* Icon DOM nodes — pointer events auto so mousedown registers on the container */}
       {bodies.map((b) => (
         <div
           key={b.id}
-          className="absolute pointer-events-none drop-shadow-md bg-white p-2 rounded-full border border-neutral-100 flex items-center justify-center"
+          className="absolute drop-shadow-md bg-white rounded-full border border-neutral-100 flex items-center justify-center"
           style={{
             width: b.size,
             height: b.size,
@@ -155,9 +183,19 @@ export const CreativeToolkit = () => {
             top: b.y - b.size / 2,
             transform: `rotate(${b.angle}rad)`,
             willChange: "transform, left, top",
+            pointerEvents: "auto",
+            cursor: "grab",
+            padding: 8,
           }}
         >
-          <img src={iconMap[b.id]} alt={b.id} width={b.size - 16} height={b.size - 16} className="w-full h-full object-contain pointer-events-none" />
+          <img
+            src={iconMap[b.id]}
+            alt={b.id}
+            width={b.size - 16}
+            height={b.size - 16}
+            draggable={false}
+            className="w-full h-full object-contain pointer-events-none select-none"
+          />
         </div>
       ))}
     </div>
