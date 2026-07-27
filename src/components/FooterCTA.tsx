@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { AISHA_INFO, TOOL_BADGES } from '../data/portfolioData';
 import { Sparkles, Mail, Video, Film, Palette, Image, FileText, Instagram, Layout, Mic, Check, Heart } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { CreativeToolkit } from './CreativeToolkit';
 
 interface FooterCTAProps {
   onOpenContact: () => void;
@@ -108,22 +109,7 @@ export const FooterCTA: React.FC<FooterCTAProps> = ({ onOpenContact }) => {
             </p>
           </div>
 
-          <div className="relative min-h-[140px] flex flex-wrap items-center justify-center gap-3 md:gap-4 p-2 overflow-visible">
-            {TOOL_BADGES.map((tool) => (
-              <motion.div
-                key={tool.id}
-                drag
-                dragConstraints={{ left: -180, right: 180, top: -60, bottom: 60 }}
-                dragElastic={0.5}
-                whileHover={{ scale: 1.15, zIndex: 40 }}
-                whileTap={{ scale: 0.92, cursor: 'grabbing' }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-200 shadow-xs cursor-grab select-none bg-white font-medium text-xs text-neutral-800 transition-shadow hover:shadow-md"
-              >
-                {getToolIcon(tool.iconName)}
-                <span>{tool.name}</span>
-              </motion.div>
-            ))}
-          </div>
+          <CreativeToolkit />
         </div>
 
         {/* Signed CTA Note (as seen in Screenshot 3) */}
