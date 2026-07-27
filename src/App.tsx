@@ -13,7 +13,7 @@ export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#fafafa] text-neutral-900 font-sans antialiased selection:bg-neutral-900 selection:text-white">
+    <div className="min-h-screen bg-[#fafafa] text-neutral-900 font-sans antialiased selection:bg-neutral-900 selection:text-white" style={{ fontFamily: '\"SF Pro Rounded\", -apple-system, sans-serif' }}>
       {/* Top Navbar */}
       <Navbar onOpenContact={() => setContactOpen(true)} />
 

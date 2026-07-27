@@ -137,8 +137,8 @@ export const CreativeToolkit = () => {
   return (
     <div
       ref={containerRef}
-      className="relative overflow-hidden select-none bg-transparent w-full"
-      style={{ height: 280, touchAction: "none" }}
+      className="absolute inset-0 overflow-hidden select-none bg-transparent w-full h-full z-0 pointer-events-auto"
+      style={{ touchAction: "none" }}
     >
       <canvas
         ref={canvasRef}

@@ -54,9 +54,10 @@ export const FooterCTA: React.FC<FooterCTAProps> = ({ onOpenContact }) => {
 
   return (
     <footer id="footer-cta" className="relative pt-20 pb-12 bg-neutral-50/50 border-t border-neutral-200/60 overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <CreativeToolkit />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10 pointer-events-none">
         {/* Center Badge Icon (from screenshot 3) */}
-        <div className="mx-auto w-16 h-16 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/20 mb-6 transform hover:rotate-12 transition-transform cursor-pointer">
+        <div className="mx-auto w-16 h-16 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/20 mb-6 transform hover:rotate-12 transition-transform cursor-pointer pointer-events-auto">
           <Film className="w-8 h-8 text-white" />
         </div>
 
@@ -71,7 +72,7 @@ export const FooterCTA: React.FC<FooterCTAProps> = ({ onOpenContact }) => {
         </h2>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-16 pointer-events-auto">
           <button
             onClick={handleHireClick}
             className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-medium rounded-full bg-neutral-900 text-white hover:bg-neutral-800 transition-all shadow-md hover:shadow-lg cursor-pointer active:scale-98"
@@ -98,19 +99,7 @@ export const FooterCTA: React.FC<FooterCTAProps> = ({ onOpenContact }) => {
           </button>
         </div>
 
-        {/* Tossable Tools Interactive Playground Container */}
-        <div className="relative my-12 py-10 px-4 bg-white/80 border border-neutral-200/80 rounded-3xl shadow-2xs">
-          <div className="text-center mb-6">
-            <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block">
-              Aisha's Creative Toolkit
-            </span>
-            <p className="text-xs text-neutral-500 mt-0.5">
-              💡 Grab & toss her favorite tools around! (Interactive drag physics)
-            </p>
-          </div>
 
-          <CreativeToolkit />
-        </div>
 
         {/* Signed CTA Note (as seen in Screenshot 3) */}
         <div className="max-w-xl mx-auto my-12 text-center px-4">
