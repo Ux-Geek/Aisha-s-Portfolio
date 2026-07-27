@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { AISHA_INFO, TOOL_BADGES } from '../data/portfolioData';
-import { Sparkles, Mail, Video, Film, Palette, Image, FileText, Instagram, Layout, Mic, Check, Heart } from 'lucide-react';
+import { Sparkles, Mail, Video, Film, Palette, Image, FileText, Instagram, Layout, Mic, Check, Heart, ArrowUp } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { CreativeToolkit } from './CreativeToolkit';
 
@@ -11,6 +11,11 @@ interface FooterCTAProps {
 
 export const FooterCTA: React.FC<FooterCTAProps> = ({ onOpenContact }) => {
   const [copied, setCopied] = useState(false);
+  const [arrowHovered, setArrowHovered] = useState(false);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleHireClick = () => {
     confetti({
@@ -111,8 +116,38 @@ export const FooterCTA: React.FC<FooterCTAProps> = ({ onOpenContact }) => {
           </span>
         </div>
 
+        {/* Scroll to Top Button */}
+        <div className="flex justify-center mb-8 pointer-events-auto">
+          <button
+            onClick={scrollToTop}
+            onMouseEnter={() => setArrowHovered(true)}
+            onMouseLeave={() => setArrowHovered(false)}
+            className="flex flex-col items-center gap-1 cursor-pointer group"
+            aria-label="Scroll to top"
+          >
+            <div className="w-11 h-11 rounded-full border border-neutral-300 bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm transition-all duration-300 group-hover:shadow-md group-hover:border-neutral-400">
+              <ArrowUp
+                className="w-5 h-5 text-neutral-600 transition-all duration-300"
+                style={{
+                  transform: arrowHovered ? 'scale(0.7)' : 'scale(1)',
+                  opacity: arrowHovered ? 0.5 : 1,
+                }}
+              />
+            </div>
+            <span
+              className="text-[10px] font-semibold uppercase tracking-widest text-neutral-500 transition-all duration-300"
+              style={{
+                opacity: arrowHovered ? 1 : 0,
+                transform: arrowHovered ? 'translateY(0)' : 'translateY(-4px)',
+              }}
+            >
+              UP
+            </span>
+          </button>
+        </div>
+
         {/* Bottom Line */}
-        <div className="pt-8 border-t border-neutral-200/60 text-xs text-neutral-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-neutral-200/60 text-xs text-neutral-500 flex flex-col sm:flex-row items-center justify-between gap-4 pointer-events-auto">
           <div>© {new Date().getFullYear()} Aisha Adeshina. All rights reserved.</div>
           <div className="flex items-center gap-1">
             <span>Made with</span>
