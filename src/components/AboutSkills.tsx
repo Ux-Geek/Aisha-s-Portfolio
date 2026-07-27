@@ -4,7 +4,7 @@ import { User, Sparkles, CheckCircle, Video, Layers, Award, Radio } from 'lucide
 
 export const AboutSkills: React.FC = () => {
   return (
-    <section id="about" className="py-16 px-4 sm:px-6 max-w-4xl mx-auto border-t border-neutral-200/60">
+    <section id="about" className="py-16 px-4 sm:px-6 max-w-4xl mx-auto">
       {/* Header */}
       <div className="mb-8">
         <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">

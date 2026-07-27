@@ -53,7 +53,7 @@ export const FooterCTA: React.FC<FooterCTAProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <footer id="footer-cta" className="relative pt-20 pb-12 bg-neutral-50/50 border-t border-neutral-200/60 overflow-hidden">
+    <footer id="footer-cta" className="relative pt-20 pb-12 bg-neutral-50/50 overflow-hidden">
       <CreativeToolkit />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10 pointer-events-none">
         {/* Center Badge Icon (from screenshot 3) */}
@@ -93,7 +93,7 @@ export const FooterCTA: React.FC<FooterCTAProps> = ({ onOpenContact }) => {
             ) : (
               <>
                 <Mail className="w-4 h-4 text-neutral-500" />
-                <span>aishaadeshina233@gmail.com</span>
+                <span>Send me a mail</span>
               </>
             )}
           </button>
