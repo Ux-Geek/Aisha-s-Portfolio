@@ -32,10 +32,10 @@ export const ProjectsGrid: React.FC = () => {
             <button
               key={cat}
               onClick={() => setActiveFilter(cat)}
-              className={`px-3.5 py-1.5 rounded-[8px] border-[0.5px] border-[#bbbbbb] text-xs font-medium transition-all cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-[20px] border-[0.5px] border-[#dcdcdc] text-xs font-medium transition-all cursor-pointer ${
                 activeFilter === cat
                   ? 'bg-neutral-900 text-white border-neutral-900'
-                  : 'bg-[#f5f5f5] text-neutral-700 hover:bg-neutral-200/80'
+                  : 'bg-[#fbfbfb] text-neutral-700 hover:bg-neutral-200/80'
               }`}
             >
               {cat}
@@ -50,11 +50,11 @@ export const ProjectsGrid: React.FC = () => {
           <div
             key={project.id}
             onClick={() => setSelectedProject(project)}
-            className="group bg-[#f5f5f5] rounded-[8px] border-[0.5px] border-[#bbbbbb] p-5 hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between"
+            className="group bg-[#fbfbfb] rounded-[20px] border-[0.5px] border-[#dcdcdc] p-5 hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between"
           >
             <div>
               {/* Image Thumbnail with Overlay Badge */}
-              <div className="relative aspect-16/9 rounded-[8px] overflow-hidden bg-neutral-100 mb-4 border-[0.5px] border-[#bbbbbb]/50">
+              <div className="relative aspect-16/9 rounded-[20px] overflow-hidden bg-neutral-100 mb-4 border-[0.5px] border-[#dcdcdc]/50">
                 <img
                   src={project.thumbnail}
                   alt={project.title}
@@ -65,7 +65,7 @@ export const ProjectsGrid: React.FC = () => {
 
                 {/* Metric Callout Badge */}
                 {project.metric && (
-                  <div className="absolute top-3 left-3 bg-[#f5f5f5] border-[0.5px] border-[#bbbbbb] text-neutral-900 text-xs font-semibold px-3 py-1 rounded-[8px] flex items-center gap-1.5">
+                  <div className="absolute top-3 left-3 bg-[#fbfbfb] border-[0.5px] border-[#dcdcdc] text-neutral-900 text-xs font-semibold px-3 py-1 rounded-[20px] flex items-center gap-1.5">
                     <TrendingUp className="w-3.5 h-3.5 text-neutral-700" />
                     <span>{project.metric}</span>
                   </div>
@@ -81,7 +81,7 @@ export const ProjectsGrid: React.FC = () => {
 
               {/* Title & Client */}
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-medium text-neutral-800 bg-[#f5f5f5] border-[0.5px] border-[#bbbbbb] px-2.5 py-0.5 rounded-[8px]">
+                <span className="text-xs font-medium text-neutral-800 bg-[#fbfbfb] border-[0.5px] border-[#dcdcdc] px-2.5 py-0.5 rounded-[20px]">
                   {project.client}
                 </span>
                 <span className="text-xs text-neutral-400 font-medium">{project.category}</span>
@@ -97,11 +97,11 @@ export const ProjectsGrid: React.FC = () => {
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-[#bbbbbb]/40">
+            <div className="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-[#dcdcdc]/40">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[11px] font-medium text-neutral-600 bg-[#f5f5f5] border-[0.5px] border-[#bbbbbb] px-2.5 py-1 rounded-[8px]"
+                  className="text-[11px] font-medium text-neutral-600 bg-[#fbfbfb] border-[0.5px] border-[#dcdcdc] px-2.5 py-1 rounded-[20px]"
                 >
                   #{tag}
                 </span>

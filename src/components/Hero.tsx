@@ -19,7 +19,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
     <section id="hero" className="pt-28 pb-16 md:pt-36 md:pb-24 px-4 sm:px-6 max-w-4xl mx-auto">
       {/* Profile Header with 0.75x Rounded Square Image */}
       <div className="flex items-center gap-4 sm:gap-5 mb-8">
-        <div className="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-[8px] overflow-hidden border-[0.5px] border-[#bbbbbb] bg-[#f5f5f5] flex-shrink-0">
+        <div className="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-[20px] overflow-hidden border-[0.5px] border-[#dcdcdc] bg-[#fbfbfb] flex-shrink-0">
           <img
             src="/images/aisha_profile.png"
             alt={AISHA_INFO.name}
@@ -28,7 +28,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
         </div>
 
         <div className="text-left leading-tight">
-          <h2 className="block text-[22px] font-bold tracking-tight text-[#999999]">
+          <h2 className="block text-[16px] font-medium tracking-tight text-[#999999]">
             {AISHA_INFO.name}
           </h2>
           <p className="text-xs sm:text-sm text-neutral-500 font-medium mt-1">
