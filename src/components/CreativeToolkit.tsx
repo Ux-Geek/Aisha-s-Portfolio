@@ -84,9 +84,11 @@ export const CreativeToolkit = () => {
     iconBodiesRef.current = iconBodies;
 
     // ---- Manual mouse drag — NO canvas, no scroll blocking ----
-    const getRelativePos = (e: MouseEvent) => {
+    const getRelativePos = (e: MouseEvent | TouchEvent) => {
       const rect = container.getBoundingClientRect();
-      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      const clientX = 'touches' in e && e.touches.length > 0 ? e.touches[0].clientX : ('clientX' in e ? e.clientX : 0);
+      const clientY = 'touches' in e && e.touches.length > 0 ? e.touches[0].clientY : ('clientY' in e ? e.clientY : 0);
+      return { x: clientX - rect.left, y: clientY - rect.top };
     };
 
     let dragConstraint: Matter.Constraint | null = null;
@@ -96,7 +98,7 @@ export const CreativeToolkit = () => {
     let velX = 0;
     let velY = 0;
 
-    const onMouseDown = (e: MouseEvent) => {
+    const onMouseDown = (e: MouseEvent | TouchEvent) => {
       const pos = getRelativePos(e);
       const hit = Query.point(iconBodiesRef.current.map(b => b.body), pos);
       if (hit.length === 0) return;
@@ -117,7 +119,7 @@ export const CreativeToolkit = () => {
       velY = 0;
     };
 
-    const onMouseMove = (e: MouseEvent) => {
+    const onMouseMove = (e: MouseEvent | TouchEvent) => {
       if (!dragConstraint) return;
       const pos = getRelativePos(e);
       const now = Date.now();
@@ -145,6 +147,9 @@ export const CreativeToolkit = () => {
     container.addEventListener("mousedown", onMouseDown, { passive: true });
     window.addEventListener("mousemove", onMouseMove, { passive: true });
     window.addEventListener("mouseup", onMouseUp, { passive: true });
+    container.addEventListener("touchstart", onMouseDown, { passive: true });
+    window.addEventListener("touchmove", onMouseMove, { passive: true });
+    window.addEventListener("touchend", onMouseUp, { passive: true });
 
     const runner = Runner.create();
     runnerRef.current = runner;
@@ -159,6 +164,9 @@ export const CreativeToolkit = () => {
       container.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
+      container.removeEventListener("touchstart", onMouseDown);
+      window.removeEventListener("touchmove", onMouseMove);
+      window.removeEventListener("touchend", onMouseUp);
     };
   }, [syncDOM]);
 
@@ -186,6 +194,7 @@ export const CreativeToolkit = () => {
             pointerEvents: "auto",
             cursor: "grab",
             padding: 8,
+            touchAction: "none",
           }}
         >
           <img
