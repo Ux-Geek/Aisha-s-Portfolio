@@ -44,7 +44,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           }}
           className="text-base font-semibold tracking-tight text-neutral-900 flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
           <span>aisha.media</span>
         </a>
 

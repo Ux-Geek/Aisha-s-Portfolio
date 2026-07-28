@@ -99,35 +99,35 @@ export const EXPERIENCES: ExperienceItem[] = [
 export const PHOTO_GALLERY: PhotoCard[] = [
   {
     id: "photo-1",
-    title: "Video Editing Studio",
-    caption: "Crafting viral reel cuts on CapCut & Premiere Pro for The Dawn Nigeria",
-    imageUrl: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&auto=format&fit=crop",
+    title: "Sisters' Seminar Campaign",
+    caption: "Media coverage & promo graphics for The Dawn Sisters' Seminar 2026",
+    imageUrl: "/images/dawn/2026-07-26_13-45-03_UTC_1.jpg",
     rotateDeg: -5,
-    tag: "Editing Setup"
+    tag: "Event Promo"
   },
   {
     id: "photo-2",
-    title: "Aisha Adeshina",
-    caption: "Media & Content Creator, Video Editor & Digital Communicator",
-    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    title: "DHP Campaign Q&A",
+    caption: "Visual storytelling & Dawah Holiday Program campaign reel snippets",
+    imageUrl: "/images/dawn/2024-12-03_17-10-59_UTC_1.jpg",
     rotateDeg: -2,
-    tag: "Portrait"
+    tag: "Campaign Reel"
   },
   {
     id: "photo-3",
-    title: "Editorial Workshop Host",
-    caption: "Hosting The Dawn Nigeria's inaugural Editorial Workshop",
-    imageUrl: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=800&auto=format&fit=crop",
+    title: "Writing & Editorial Series",
+    caption: "Editorial workshop & digital publication graphics for The Dawn Nigeria",
+    imageUrl: "/images/dawn/2026-06-14_07-50-45_UTC.jpg",
     rotateDeg: 3,
-    tag: "Public Speaking"
+    tag: "Editorial"
   },
   {
     id: "photo-4",
-    title: "GDG Career Fest & Cowrywise",
-    caption: "Impacted 100+ students through campus activations and media coverage",
-    imageUrl: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop",
+    title: "The Dawn Community Broadcasts",
+    caption: "Regional district activations & announcements for The Dawn Nigeria",
+    imageUrl: "/images/dawn/2026-05-18_12-13-50_UTC.jpg",
     rotateDeg: 6,
-    tag: "Campus & Events"
+    tag: "Community"
   }
 ];
 
@@ -139,7 +139,7 @@ export const PROJECTS: ProjectItem[] = [
     client: "The Dawn Nigeria",
     description: "Designed, edited, and captioned dynamic short-form video reels that scaled Instagram viewership by +1,000% from 1,000 views to 11,000+ views per reel.",
     metric: "1k → 11k+ Views",
-    thumbnail: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop",
+    thumbnail: "/images/dawn/2026-07-26_13-45-03_UTC_1.jpg",
     tags: ["CapCut", "Reels", "Scripting", "Video Editing"],
     featured: true
   },
@@ -150,41 +150,41 @@ export const PROJECTS: ProjectItem[] = [
     client: "The Dawn Nigeria",
     description: "Comprehensive event promotional strategy including promo teaser reels, graphic captions, and community engagement posts driving record attendance.",
     metric: "+85% Event Signups",
-    thumbnail: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop",
+    thumbnail: "/images/dawn/2024-12-03_17-10-59_UTC_1.jpg",
     tags: ["Event Promotion", "Social Media", "Video Reels"],
     featured: true
   },
   {
     id: "proj-3",
-    title: "GDG Career Fest Media Coverage",
+    title: "The Dawn Sisters' Seminar 2026",
     category: "Social Media",
-    client: "Google Developer Group",
-    description: "On-site video footage collection, quick-turnaround social media edits, speaker interview snippets, and live event highlight reels.",
+    client: "The Dawn Nigeria",
+    description: "Multi-channel event promotion, speaker showcase reels, and interactive social media announcements created for The Dawn Sisters' Seminar.",
     metric: "10k+ Impressions",
-    thumbnail: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop",
-    tags: ["Live Coverage", "Interview Edits", "Digital Media"],
+    thumbnail: "/images/dawn/2026-07-02_16-34-26_UTC.jpg",
+    tags: ["Event Promo", "Reel Edits", "Digital Media"],
     featured: true
   },
   {
     id: "proj-4",
-    title: "Editorial Newsletter & Workshop",
+    title: "Editorial & Writing Workshop Series",
     category: "Editorial",
     client: "The Dawn Nigeria",
     description: "Planned and hosted the inaugural Editorial Workshop while publishing recurring digital newsletters connecting community readers.",
     metric: "100% Hosted Workshop",
-    thumbnail: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop",
+    thumbnail: "/images/dawn/2026-06-14_07-50-45_UTC.jpg",
     tags: ["Editorial", "Newsletter", "Workshop Hosting"],
     featured: false
   },
   {
     id: "proj-5",
-    title: "Cowrywise Campus Financial Literacy",
+    title: "Regional District Youth Activations",
     category: "Campaigns",
-    client: "Cowrywise",
-    description: "Peer engagement campaigns and interactive video clips breaking down smart financial savings for university students.",
+    client: "The Dawn Nigeria",
+    description: "Digital campaign media, broadcast graphics, and engagement clips for regional district youth programs.",
     metric: "100+ Students Impacted",
-    thumbnail: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop",
-    tags: ["Campus Ambassador", "Financial Literacy", "Peer Marketing"],
+    thumbnail: "/images/dawn/2026-05-18_12-13-50_UTC.jpg",
+    tags: ["Community", "Event Promo", "Digital Content"],
     featured: false
   }
 ];

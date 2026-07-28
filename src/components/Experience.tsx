@@ -17,7 +17,7 @@ export const Experience: React.FC = () => {
         {EXPERIENCES.map((item) => (
           <div
             key={item.id}
-            className="bg-[#f9fafb] border border-neutral-200/80 rounded-2xl p-6 sm:p-8 transition-all duration-200 hover:border-neutral-300 hover:shadow-xs"
+            className="bg-[#f5f5f5] border-[0.5px] border-[#bbbbbb] rounded-[8px] p-6 sm:p-8 transition-all duration-200 hover:border-neutral-400"
           >
             {/* Top Row: Logo/Badge, Titles & Dates */}
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
@@ -25,7 +25,7 @@ export const Experience: React.FC = () => {
                 {/* Brand Badge */}
                 <div
                   style={{ backgroundColor: item.badgeBg, color: item.badgeTextColor }}
-                  className="w-11 h-11 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 shadow-2xs mt-0.5"
+                  className="w-11 h-11 rounded-[8px] flex items-center justify-center text-xs font-bold shrink-0 shadow-2xs mt-0.5"
                 >
                   {item.badgeLetter}
                 </div>
@@ -46,13 +46,13 @@ export const Experience: React.FC = () => {
               </div>
 
               {/* Date */}
-              <div className="text-xs font-medium text-neutral-500 bg-white border border-neutral-200/80 px-3 py-1 rounded-full self-start sm:self-auto shrink-0 shadow-2xs">
+              <div className="text-xs font-medium text-neutral-700 bg-[#f5f5f5] border-[0.5px] border-[#bbbbbb] px-3 py-1 rounded-[8px] self-start sm:self-auto shrink-0">
                 {item.period}
               </div>
             </div>
 
             {/* Bullets Box */}
-            <div className="bg-white rounded-xl border border-neutral-100 p-5 sm:p-6 shadow-2xs">
+            <div className="bg-[#f5f5f5] rounded-[8px] border-[0.5px] border-[#bbbbbb] p-5 sm:p-6">
               <ul className="space-y-3">
                 {item.bullets.map((bullet, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-neutral-600 leading-relaxed">

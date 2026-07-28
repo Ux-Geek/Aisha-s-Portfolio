@@ -17,17 +17,23 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
 
   return (
     <section id="hero" className="pt-28 pb-16 md:pt-36 md:pb-24 px-4 sm:px-6 max-w-4xl mx-auto">
-      {/* Profile Pill Badge */}
-      <div className="inline-flex items-center gap-3 bg-neutral-100/90 border border-neutral-200/80 rounded-full p-1.5 pr-4 shadow-2xs mb-8 transition-transform hover:scale-[1.02]">
-        <img
-          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
-          alt={AISHA_INFO.name}
-          className="w-10 h-10 rounded-full object-cover border border-white shadow-2xs"
-          referrerPolicy="no-referrer"
-        />
+      {/* Profile Header with 0.75x Rounded Square Image */}
+      <div className="flex items-center gap-4 sm:gap-5 mb-8">
+        <div className="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-[8px] overflow-hidden border-[0.5px] border-[#bbbbbb] bg-[#f5f5f5] flex-shrink-0">
+          <img
+            src="/images/aisha_profile.png"
+            alt={AISHA_INFO.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
         <div className="text-left leading-tight">
-          <h2 className="text-sm font-semibold text-neutral-900">{AISHA_INFO.name}</h2>
-          <p className="text-xs text-neutral-500 font-medium">{AISHA_INFO.shortRole}</p>
+          <h2 className="block text-[22px] font-bold tracking-tight text-[#999999]">
+            {AISHA_INFO.name}
+          </h2>
+          <p className="text-xs sm:text-sm text-neutral-500 font-medium mt-1">
+            Social Media & Growth Specialist
+          </p>
         </div>
       </div>
 

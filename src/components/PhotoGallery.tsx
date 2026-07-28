@@ -26,15 +26,15 @@ export const PhotoGallery: React.FC = () => {
             style={{
               transform: `rotate(${photo.rotateDeg}deg)`,
             }}
-            className="group relative bg-white p-3 sm:p-4 rounded-2xl border border-neutral-200/80 shadow-md hover:shadow-2xl transition-all duration-300 hover:rotate-0 hover:scale-105 hover:z-20 cursor-pointer w-full sm:w-64 md:w-1/4"
+            className="group relative bg-[#f5f5f5] p-3 sm:p-4 rounded-[8px] border-[0.5px] border-[#bbbbbb] shadow-sm hover:shadow-xl transition-all duration-300 hover:rotate-0 hover:scale-105 hover:z-20 cursor-pointer w-full sm:w-64 md:w-1/4"
           >
             {/* Tag Badge */}
-            <div className="absolute top-5 right-5 z-10 bg-black/60 backdrop-blur-xs text-white text-[10px] font-medium px-2 py-0.5 rounded-full opacity-90">
+            <div className="absolute top-5 right-5 z-10 bg-[#f5f5f5] border-[0.5px] border-[#bbbbbb] text-neutral-800 text-[10px] font-medium px-2 py-0.5 rounded-[8px]">
               {photo.tag}
             </div>
 
             {/* Photo Container */}
-            <div className="relative aspect-3/4 rounded-xl overflow-hidden bg-neutral-100 mb-3">
+            <div className="relative aspect-3/4 rounded-[8px] overflow-hidden bg-neutral-100 mb-3 border-[0.5px] border-[#bbbbbb]/50">
               <img
                 src={photo.imageUrl}
                 alt={photo.title}
