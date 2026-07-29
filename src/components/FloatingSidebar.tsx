@@ -14,7 +14,7 @@ export const FloatingSidebar: React.FC<FloatingSidebarProps> = ({ onOpenContact 
         title="Send Email"
         className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-900 text-neutral-600 hover:text-white flex items-center justify-center transition-all cursor-pointer group"
       >
-        <Mail className="w-4 h-4 transition-transform group-hover:scale-110" />
+        <img src="/icons/gmail.svg" alt="Email" className="w-5 h-5 transition-transform group-hover:scale-110" />
       </button>
 
       <a
@@ -24,8 +24,22 @@ export const FloatingSidebar: React.FC<FloatingSidebarProps> = ({ onOpenContact 
         title="LinkedIn Profile"
         className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-900 text-neutral-600 hover:text-white flex items-center justify-center transition-all cursor-pointer group"
       >
-        <Linkedin className="w-4 h-4 transition-transform group-hover:scale-110" />
+        <img src="/icons/linkedin.svg" alt="LinkedIn" className="w-5 h-5 transition-transform group-hover:scale-110" />
       </a>
+
+      <div
+        title="Microsoft Word"
+        className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-900 text-neutral-600 hover:text-white flex items-center justify-center transition-all cursor-default group"
+      >
+        <img src="/icons/ms_word.svg" alt="MS Word" className="w-5 h-5 transition-transform group-hover:scale-110" />
+      </div>
+
+      <div
+        title="Canva"
+        className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-900 text-neutral-600 hover:text-white flex items-center justify-center transition-all cursor-default group"
+      >
+        <img src="/icons/Canva.svg" alt="Canva" className="w-5 h-5 transition-transform group-hover:scale-110" />
+      </div>
 
       <a
         href={`https://wa.me/2347065396819`}

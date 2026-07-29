@@ -2,14 +2,16 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import Matter from "matter-js";
 
 const CREATIVE_ICONS = [
-  { id: "linkedin", src: "https://cdn.simpleicons.org/linkedin/0A66C2", size: 52 },
+  { id: "linkedin", src: "/icons/linkedin.svg", size: 52 },
   { id: "x", src: "https://cdn.simpleicons.org/x", size: 52 },
   { id: "youtube", src: "https://cdn.simpleicons.org/youtube/FF0000", size: 52 },
   { id: "facebook", src: "https://cdn.simpleicons.org/facebook/1877F2", size: 52 },
   { id: "instagram", src: "https://cdn.simpleicons.org/instagram/E4405F", size: 52 },
   { id: "tiktok", src: "https://cdn.simpleicons.org/tiktok", size: 52 },
-  { id: "canva", src: "https://cdn.simpleicons.org/canva/00C4CC", size: 52 },
+  { id: "canva", src: "/icons/Canva.svg", size: 52 },
   { id: "capcut", src: "/images/capcut_logo.png", size: 52 },
+  { id: "gmail", src: "/icons/gmail.svg", size: 52 },
+  { id: "ms_word", src: "/icons/ms_word.svg", size: 52 },
 ];
 
 interface IconBody {
