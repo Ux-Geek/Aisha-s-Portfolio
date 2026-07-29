@@ -42,6 +42,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     badgeBg: "#4f46e5",
     badgeTextColor: "#ffffff",
     badgeLetter: "TD",
+    badgeLogoUrl: "/images/thedawnng.svg",
     bullets: [
       "Produce engaging video content for Instagram, growing video viewership from approximately 1,000 to over 11,000 views.",
       "Write captions, scripts, and promotional copy that communicate key messages and encourage audience interaction.",
@@ -59,6 +60,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     badgeBg: "#059669",
     badgeTextColor: "#ffffff",
     badgeLetter: "ED",
+    badgeLogoUrl: "/images/thedawnng.svg",
     bullets: [
       "Support the production and planning of editorial newsletters for the organization.",
       "Led and hosted the first Editorial workshop of the organization that increased audience awareness."
