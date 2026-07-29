@@ -175,7 +175,7 @@ export const ProjectsGrid: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>CapCut & Premiere Video Editing</span>
+                    <span>CapCut Video Editing</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />

@@ -149,17 +149,6 @@ export const PROJECTS: ProjectItem[] = [
     featured: true
   },
   {
-    id: "proj-3",
-    title: "The Dawn Sisters' Seminar 2026",
-    category: "Social Media",
-    client: "The Dawn Nigeria",
-    description: "Multi-channel event promotion, speaker showcase reels, and interactive social media announcements created for The Dawn Sisters' Seminar.",
-    metric: "10k+ Impressions",
-    thumbnail: "/images/dawn/2026-07-02_16-34-26_UTC.jpg",
-    tags: ["Event Promo", "Reel Edits", "Digital Media"],
-    featured: true
-  },
-  {
     id: "proj-4",
     title: "Editorial & Writing Workshop Series",
     category: "Editorial",
