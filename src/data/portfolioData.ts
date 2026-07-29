@@ -101,35 +101,27 @@ export const EXPERIENCES: ExperienceItem[] = [
 export const PHOTO_GALLERY: PhotoCard[] = [
   {
     id: "photo-1",
-    title: "Sisters' Seminar Campaign",
-    caption: "Media coverage & promo graphics for The Dawn Sisters' Seminar 2026",
-    imageUrl: "/images/dawn/2026-07-26_13-45-03_UTC_1.jpg",
+    title: "On-Set Direction",
+    caption: "Hands-on content production and media direction for digital campaigns.",
+    imageUrl: "/images/Aisha Shot 1.jpeg",
     rotateDeg: -5,
-    tag: "Event Promo"
+    tag: "Content Shoot"
   },
   {
     id: "photo-2",
-    title: "DHP Campaign Q&A",
-    caption: "Visual storytelling & Dawah Holiday Program campaign reel snippets",
-    imageUrl: "/images/dawn/2024-12-03_17-10-59_UTC_1.jpg",
+    title: "Digital Strategy",
+    caption: "Planning and executing social media strategies for brand visibility.",
+    imageUrl: "/images/Aisha Shot 2.jpeg",
     rotateDeg: -2,
-    tag: "Campaign Reel"
+    tag: "Strategy"
   },
   {
     id: "photo-3",
-    title: "Writing & Editorial Series",
-    caption: "Editorial workshop & digital publication graphics for The Dawn Nigeria",
-    imageUrl: "/images/dawn/2026-06-14_07-50-45_UTC.jpg",
-    rotateDeg: 3,
-    tag: "Editorial"
-  },
-  {
-    id: "photo-4",
-    title: "The Dawn Community Broadcasts",
-    caption: "Regional district activations & announcements for The Dawn Nigeria",
-    imageUrl: "/images/dawn/2026-05-18_12-13-50_UTC.jpg",
-    rotateDeg: 6,
-    tag: "Community"
+    title: "Visual Storytelling",
+    caption: "Creative direction and visual storytelling for digital brands.",
+    imageUrl: "/images/Aisha Shot 3.jpeg",
+    rotateDeg: 4,
+    tag: "Visuals"
   }
 ];
 
