@@ -1,5 +1,5 @@
-import React from 'react';
-import { Sparkles, Calendar, ArrowUpRight, Copy, Check, Video } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail } from 'lucide-react';
 import { AISHA_INFO } from '../data/portfolioData';
 
 interface HeroProps {
@@ -7,13 +7,15 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
-  const [copied, setCopied] = React.useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(AISHA_INFO.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section id="hero" className="pt-28 pb-16 md:pt-36 md:pb-24 px-4 sm:px-6 max-w-4xl mx-auto">
@@ -51,31 +53,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
       </p>
 
       {/* Primary Action Buttons */}
-      <div className="flex flex-wrap items-center justify-start gap-4">
-        <button
-          onClick={onOpenContact}
-          className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-medium rounded-full bg-neutral-900 text-white hover:bg-neutral-800 transition-all shadow-sm hover:shadow-md cursor-pointer active:scale-98"
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+        <a
+          href={`mailto:${AISHA_INFO.email}`}
+          className={`inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-medium rounded-full transition-all duration-300 shadow-lg cursor-pointer ${
+            scrolled ? 'bg-black/70 backdrop-blur-md text-white' : 'bg-black text-white'
+          }`}
         >
-          <Sparkles className="w-4 h-4 text-amber-300" />
-          <span>Hire me for Media & Video</span>
-        </button>
-
-        <button
-          onClick={handleCopyEmail}
-          className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-medium rounded-full bg-neutral-100 text-neutral-800 hover:bg-neutral-200/80 border border-neutral-200 transition-all cursor-pointer active:scale-98"
-        >
-          {copied ? (
-            <>
-              <Check className="w-4 h-4 text-emerald-600" />
-              <span className="text-emerald-700">Email copied!</span>
-            </>
-          ) : (
-            <>
-              <Copy className="w-4 h-4 text-neutral-500" />
-              <span>Copy Email</span>
-            </>
-          )}
-        </button>
+          <Mail className="w-4 h-4 text-white" />
+          <span>Send me a mail</span>
+        </a>
       </div>
     </section>
   );
