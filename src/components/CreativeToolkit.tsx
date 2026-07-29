@@ -9,7 +9,7 @@ const CREATIVE_ICONS = [
   { id: "instagram", src: "https://cdn.simpleicons.org/instagram/E4405F", size: 52 },
   { id: "tiktok", src: "https://cdn.simpleicons.org/tiktok", size: 52 },
   { id: "canva", src: "https://cdn.simpleicons.org/canva/00C4CC", size: 52 },
-  { id: "capcut", src: "https://cdn.simpleicons.org/capcut", size: 52 },
+  { id: "capcut", src: "/images/capcut_logo.png", size: 52 },
 ];
 
 interface IconBody {
