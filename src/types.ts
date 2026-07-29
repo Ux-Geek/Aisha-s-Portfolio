@@ -7,6 +7,7 @@ export interface ExperienceItem {
   badgeBg: string;
   badgeTextColor: string;
   badgeLetter: string;
+  badgeLogoUrl?: string;
   bullets: string[];
 }
 

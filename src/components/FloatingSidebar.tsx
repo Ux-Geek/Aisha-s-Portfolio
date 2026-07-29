@@ -37,14 +37,6 @@ export const FloatingSidebar: React.FC<FloatingSidebarProps> = ({ onOpenContact 
         <Phone className="w-4 h-4 transition-transform group-hover:scale-110" />
       </a>
 
-      <a
-        href={`mailto:${AISHA_INFO.email}`}
-        title="Direct Mail"
-        className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-900 text-neutral-600 hover:text-white flex items-center justify-center transition-all cursor-pointer group"
-      >
-        <Video className="w-4 h-4 transition-transform group-hover:scale-110" />
-      </a>
-
       <button
         onClick={() => {
           if (navigator.share) {

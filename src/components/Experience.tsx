@@ -23,12 +23,22 @@ export const Experience: React.FC = () => {
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
               <div className="flex items-start gap-4">
                 {/* Brand Badge */}
-                <div
-                  style={{ backgroundColor: item.badgeBg, color: item.badgeTextColor }}
-                  className="w-11 h-11 rounded-[20px] flex items-center justify-center text-xs font-bold shrink-0 shadow-2xs mt-0.5"
-                >
-                  {item.badgeLetter}
-                </div>
+                {item.badgeLogoUrl ? (
+                  <div className="w-11 h-11 rounded-[20px] overflow-hidden shrink-0 mt-0.5 bg-white border-[0.5px] border-[#dcdcdc]">
+                    <img
+                      src={item.badgeLogoUrl}
+                      alt={item.company}
+                      className="w-full h-full object-contain p-1"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    style={{ backgroundColor: item.badgeBg, color: item.badgeTextColor }}
+                    className="w-11 h-11 rounded-[20px] flex items-center justify-center text-xs font-bold shrink-0 shadow-2xs mt-0.5"
+                  >
+                    {item.badgeLetter}
+                  </div>
+                )}
 
                 <div>
                   <h3 className="text-base sm:text-lg font-semibold text-neutral-900 leading-snug">

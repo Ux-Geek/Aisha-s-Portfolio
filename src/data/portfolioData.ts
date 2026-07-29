@@ -6,7 +6,7 @@ export const AISHA_INFO = {
   shortRole: "Media & Content Creator",
   location: "Ilorin, Kwara, Nigeria",
   phone: "+234 706 539 6819",
-  email: "aishaadeshina233@gmail.com",
+  email: "info.digitalaisha@gmail.com",
   linkedin: "https://linkedin.com/in/aisha-adeshina",
   linkedinHandle: "linkedin.com/in/aisha-adeshina",
   aboutBio: `Creative and versatile Media & Content Creator with hands-on experience in video editing, social media content creation, digital campaigns, editorial content, and visual storytelling. Skilled in developing engaging content that captures audience attention, communicates ideas clearly, and strengthens brand visibility and community engagement. Experienced in taking content from ideation to publication, collaborating with media teams, and creating promotional content for campaigns and events. Demonstrated ability to grow video viewership from approximately 1,000 to over 11,000 views through effective content production and editing.`,
@@ -28,9 +28,7 @@ export const AISHA_INFO = {
     "Event Promotion",
     "Microsoft Word",
     "Canva",
-    "CapCut",
-    "Adobe Premiere Pro",
-    "Photoshop"
+    "CapCut"
   ]
 };
 
@@ -75,6 +73,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     badgeBg: "#ea4335",
     badgeTextColor: "#ffffff",
     badgeLetter: "GDG",
+    badgeLogoUrl: "/images/gdg_logo.png",
     bullets: [
       "Supported media activities and content production for a career-focused event.",
       "Contributed to event communication, digital content, and promotional activities in collaboration with the media team."
@@ -89,6 +88,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     badgeBg: "#2563eb",
     badgeTextColor: "#ffffff",
     badgeLetter: "CW",
+    badgeLogoUrl: "https://cdn.brandfetch.io/idmNS5FPcr/theme/dark/symbol.svg?c=1bxid64Mup7aczewSAYMX&t=1672203049417",
     bullets: [
       "Reached and impacted 100+ students through peer engagement and content sharing.",
       "Support campus activation strategies while communicating product information clearly to students and prospective users."
@@ -186,16 +186,25 @@ export const PROJECTS: ProjectItem[] = [
     thumbnail: "/images/dawn/2026-05-18_12-13-50_UTC.jpg",
     tags: ["Community", "Event Promo", "Digital Content"],
     featured: false
+  },
+  {
+    id: "proj-6",
+    title: "Wadudah Clothing — Content Shoot & Editing",
+    category: "Video Editing",
+    client: "Wadudah Clothing",
+    description: "Directed, shot, and edited lifestyle and product video content for Wadudah Clothing brand, showcasing modest fashion pieces through engaging visual storytelling.",
+    metric: "Brand Launch Content",
+    thumbnail: "/images/dawn/2026-07-19_12-18-26_UTC.jpg",
+    tags: ["Content Shoot", "Video Editing", "Brand Content", "CapCut"],
+    featured: true
   }
 ];
 
 export const TOOL_BADGES: ToolBadge[] = [
   { id: "tool-capcut", name: "CapCut", iconName: "Video", color: "#000000", bg: "#f3f4f6", initialX: -120, initialY: -30 },
   { id: "tool-canva", name: "Canva", iconName: "Palette", color: "#00c4cc", bg: "#e0f7fa", initialX: -40, initialY: -50 },
-  { id: "tool-premiere", name: "Premiere Pro", iconName: "Film", color: "#9999ff", bg: "#f3e8ff", initialX: 40, initialY: -40 },
-  { id: "tool-photoshop", name: "Photoshop", iconName: "Image", color: "#31a8ff", bg: "#e0f2fe", initialX: 120, initialY: -20 },
   { id: "tool-word", name: "MS Word", iconName: "FileText", color: "#185abd", bg: "#dbeafe", initialX: -100, initialY: 30 },
   { id: "tool-instagram", name: "Instagram", iconName: "Instagram", color: "#e1306c", bg: "#fce7f3", initialX: -10, initialY: 20 },
-  { id: "tool-notion", name: "Notion", iconName: "Layout", color: "#000000", bg: "#f3f4f6", initialX: 80, initialY: 35 },
-  { id: "tool-audacity", name: "Audacity", iconName: "Mic", color: "#0000cc", bg: "#e0e7ff", initialX: 150, initialY: 10 }
+  { id: "tool-tiktok", name: "TikTok", iconName: "Music", color: "#000000", bg: "#f3f4f6", initialX: 80, initialY: 35 },
+  { id: "tool-linkedin", name: "LinkedIn", iconName: "Linkedin", color: "#0A66C2", bg: "#dbeafe", initialX: 150, initialY: 10 }
 ];
